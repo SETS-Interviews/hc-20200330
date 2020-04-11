@@ -13,9 +13,11 @@ export const fetchAllMovies = () => dispatch => {
   });
 };
 
-  export const fetchMovies = (query) => dispatch => {
+  export const fetchMovie = (query) => dispatch => {
+    console.log('fetch movie ran')
     axios.get('http://localhost:5000/movie/search'
     ).then(function (response) {
+      console.log('response from fetchmovie', response)
       dispatch({ type: FETCH_MOVIES, payload: response.data });
     })
     .catch(function (error) {

@@ -15,7 +15,6 @@ class MovieList extends Component {
 
   render() {
     const movies = _.map(this.props.movies, (m) => {
-      console.log(m.id)
       return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />
     });
 

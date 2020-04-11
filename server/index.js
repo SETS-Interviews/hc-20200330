@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   app.get('/movie/search', (req, res) => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=949bff8e08031ca57f596f86e7440dde&query=Jaws`
     ).then(function (response) {
-      console.log(response.data.results)
+        res.send(response.data)
     })
     .catch(function (error) {
       console.log(error);
