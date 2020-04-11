@@ -4,17 +4,28 @@ import { Poster } from "./Movie";
 import Overdrive from "react-overdrive";
 import * as actions from '../actions';
 import { connect } from "react-redux";
+import Credits from './Credits'
 
 class MovieDetail extends Component {
+  componentDidMount(){
+    this.props.fetchCredits(this.props.match.params.id)
+  }
+
   render() {
+    if (this.props.movie == undefined){
+      return(
+        <>
+        <br/>
+        <p>Sorry. We could not find that movie.</p>
+        </>
+      )
+    }
     const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
     const BACKDROP_PATH = "http://image.tmdb.org/t/p/w1280";
 
-    const { movie } = this.props;
+    const movie  = this.props.movie.filter(movie=>(movie.id == this.props.match.params.id))[0];
 
-
-
-    const renderAddToWatchList = () => {
+    const renderMovieDetail = () => {
       
         return (
           <div id="info">
@@ -26,10 +37,11 @@ class MovieDetail extends Component {
                 /10
               </p>
             </div>
+            <p>{movie.overview}</p>
           </div>
         );
     }
-
+    //if the id number can't be found
     return (
       <Fragment>
         <BackdropContainer
@@ -43,12 +55,10 @@ class MovieDetail extends Component {
               style={{ boxShadow: "0 5px 30px black" }}
             />
           </Overdrive>
-          {renderAddToWatchList()}
+          {renderMovieDetail()}
         </DetailInfo>
-
-
         <Description>
-          <p>{movie.overview}</p>
+          <Credits />
         </Description>
       </Fragment>
     );
@@ -57,7 +67,7 @@ class MovieDetail extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    movie: state.movies.results[ownProps.match.params.id],
+    movie: state.movies.results,
   };
 }
 
@@ -72,6 +82,7 @@ const BackdropContainer = styled.div`
   background: url(${props => props.backdrop}) no-repeat;
   background-position: relative;
   object-fit: cover;
+  width:100%;
   justify-content: center;
   opacity: 0.8;
 `;
@@ -96,7 +107,7 @@ const DetailInfo = styled.div`
     align-content: center;
     margin: 0.5em auto 1em 0;
     color: hsl(0, 100%, 59%);
-    font-size: 0.7em;
+    font-size: 1em;
   }
   div#infoAttr > p:not(.first) {
     display: inline-block;
@@ -107,6 +118,7 @@ const DetailInfo = styled.div`
     color: hsl(0, 100%, 72%);
     cursor: pointer;
   }
+
   img {
     position: relative;
     top: -5rem;

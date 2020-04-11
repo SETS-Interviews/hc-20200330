@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import * as actions from '../actions';
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 //controls the search bar
 function SearchBar(props) {
@@ -25,9 +26,9 @@ const [type, setSearchType] = useState('movie')
       return (
         <SearchContainer>
             <button id="logo" onClick={logoClick}>
-                <a to="/">
+                <Link to="/">
                     <h1>Movie Database</h1>
-                </a>
+                </Link>
             </button>
             <form id="search">
                 <select id='selector' onChange={event => setSearchType(event.target.value)}>
@@ -35,7 +36,11 @@ const [type, setSearchType] = useState('movie')
                     <option value="person">People</option>
                 </select>
                 <input id='bar' onChange={event => setSearchQuery(event.target.value)} type="text" placeholder="Search"></input>
-                <button className='search-btn' type='button' onClick={onFormSubmit}>Go!</button>
+                <button className='search-btn' type='button' onClick={onFormSubmit}>
+                <Link to="/">
+                Go!
+                </Link>
+                </button>
             </form>
         </SearchContainer>
       )

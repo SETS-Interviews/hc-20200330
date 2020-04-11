@@ -18,8 +18,6 @@ class MovieList extends Component {
       return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />
     });
 
-    console.log('movie list rendered')
-
     return (
         <MovieGrid>
           {movies}
@@ -42,7 +40,6 @@ export default connect(
 const MovieGrid = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   flex-wrap: wrap;
   padding: 2em;
   margin: 0 auto;
