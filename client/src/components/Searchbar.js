@@ -3,44 +3,41 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import * as actions from '../actions';
 import styled from "styled-components";
-import { NavLink, Link } from "react-router-dom";
-
-
-
 
 //controls the search bar
 function SearchBar(props) {
 
-  //using hooks to save the search term as it is changed. 
-  const [term, setSearchTerm] = useState('')
+//using hooks to save the search term as it is changed. 
+const [query, setSearchQuery] = useState('')
 
-  //called when a new search option is searched
+//using hooks to save the term type when it changes. 
+const [type, setSearchType] = useState('movie')
+
+  //called when a Go butto is clicked
   const onFormSubmit = function (event) {
     //sends the search to the actions
-    props.fetchMovie()
+    props.fetchSearch(type, query)
   }
 
+  //shows all movies when logo is clickd
   const logoClick = () =>{props.fetchAllMovies()}
 
       return (
-        
         <SearchContainer>
-       
-        <button id="logo" onClick={logoClick}>
-        <a to="/">
-          <h1>Movie Database</h1>
-        </a>
-        </button>
-          <form id="search">
-            <select id="cars" name="carlist" form="carform">
-                <option value="Movies">Movies</option>
-                <option value="People">People</option>
-            </select>
-            <input onChange={event => setSearchTerm(event.target.value)} type="text" placeholder="Search"></input>
-            <button className='search-btn' type='button' onClick={onFormSubmit}>Go!</button>
-          </form>
-       
-          </SearchContainer>
+            <button id="logo" onClick={logoClick}>
+                <a to="/">
+                    <h1>Movie Database</h1>
+                </a>
+            </button>
+            <form id="search">
+                <select id='selector' onChange={event => setSearchType(event.target.value)}>
+                    <option value="movie">Movies</option>
+                    <option value="person">People</option>
+                </select>
+                <input id='bar' onChange={event => setSearchQuery(event.target.value)} type="text" placeholder="Search"></input>
+                <button className='search-btn' type='button' onClick={onFormSubmit}>Go!</button>
+            </form>
+        </SearchContainer>
       )
     }
 
@@ -74,6 +71,9 @@ function SearchBar(props) {
         margin-right: 100px;
         margin-top:20px;
         height: auto;
+      }
+      #bar{
+          width:300px;
       }
       a {
         color: #fff;
