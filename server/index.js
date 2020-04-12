@@ -22,7 +22,8 @@ app.get('/', (req, res) => {
       res.send(response.data)
     })
     .catch(function (error) {
-      console.log(error);
+        res.status(404);
+        return res.end(`Sorry, request could not be made. Please try again later.`);
     });
   });
 
@@ -31,13 +32,17 @@ app.get('/', (req, res) => {
   app.get('/search', (req, res) => {
     console.log(req.query)
     //if user searched for a movie
-    if (req.query.type === 'movie'){
+    if(req.query.search === undefined){
+        res.status(404);
+        return res.end(`Please enter a search term.`);
+    }else if (req.query.type === 'movie'){
         axios.get(`${baseURL}search/movie?${apiKey}&query=${req.query.search}`
         ).then(function (response) {
             res.send(response.data)
         })
         .catch(function (error) {
-          console.log(error);
+            res.status(404);
+            return res.end(`Sorry, request could not be made. Please try again later.`);
         });
     //if user search people
     }else if (req.query.type === 'person'){
@@ -50,24 +55,31 @@ app.get('/', (req, res) => {
                 res.send(response.data)
             })
             .catch(function (error) {
-              console.log(error);
+                res.status(404);
+                return res.end(`No movies with that actor were found.`);
             });  
         })
         .catch(function (error) {
-          console.log(error);
+            res.status(404);
+            return res.end(`Person with the name ${req.query.search} could not be found`);
         });
     }
   });
 
   //gets movie credits
   app.get('/:movieId', (req, res) => {
+    if (isNaN(req.params.movieId) == true){
+        res.status(404);
+        return res.end(`Id must be a number.`);
+    }
     //if user searched for a movie
     axios.get(`${baseURL}movie/${req.params.movieId}/credits?${apiKey}&language=en-US`
     ).then(function (response) {
         res.send(response.data)
     })
     .catch(function (error) {
-        console.log(error);
+        res.status(404);
+        return res.end(`No movie with id number ${req.params.movieId} could be found.`);
     });
   })
 
@@ -76,4 +88,4 @@ app.get('/', (req, res) => {
 const port = 5000;
 const server = http.createServer(app);
 server.listen(port);
-console.log('Server listening on:', port);
+module.exports = { server }

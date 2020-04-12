@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.18.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "axios": "^0.18.1"
+    "express": "^4.17.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app/server.js",
+    "test": "mocha --reporter dot",
+    "coverage": "nyc --reporter html --reporter text npm test"
   },
   "author": "",
   "license": "ISC"
