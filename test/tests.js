@@ -1,6 +1,6 @@
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let { server } = require('../index');
+let { server } = require('../server/index');
 chai.use(chaiHttp);
 var mocha = require('mocha')
 var describe = mocha.describe
