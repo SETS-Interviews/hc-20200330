@@ -1,8 +1,9 @@
 import axios from "axios";
-import { FETCH_MOVIES, FETCH_CREDITS} from './types';
+import { FETCH_MOVIES, FETCH_CREDITS, ERROR_MESSAGE, SAVE_SEARCH} from './types';
 
 //Asks for list of all movies
-export const fetchAllMovies = () => dispatch => {
+export const fetchAllMovies = (type) => dispatch => {
+ dispatch({ type: SAVE_SEARCH, payload: {type: type, query:''}})
   axios.get(`http://localhost:5000`
   ).then(function (response) {
     console.log('fetch all movies', response)
@@ -15,13 +16,15 @@ export const fetchAllMovies = () => dispatch => {
 
 //Asks for specific search of person or movie
   export const fetchSearch = (type, query) => dispatch => {
+    dispatch({ type: SAVE_SEARCH, payload: {type: type, query:query}})
     axios.get(`http://localhost:5000/search?type=${type}&search=${query}`
     ).then(function (response) {
       console.log('response from fetchSearch', response)
       dispatch({ type: FETCH_MOVIES, payload: response.data });
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
+      dispatch({ type: ERROR_MESSAGE, payload: error });
     });
   };
 
@@ -37,6 +40,8 @@ export const fetchCredits = (movieId) => dispatch => {
     console.log(error);
   });
 };
+
+
 
 
 

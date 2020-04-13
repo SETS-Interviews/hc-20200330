@@ -9,17 +9,13 @@ import { Link } from "react-router-dom";
 function SearchBar(props) {
 
 //using hooks to save the search term as it is changed. 
-const [query, setSearchQuery] = useState('')
+const [query, setSearchQuery] = useState(props.search.query)
 
 //using hooks to save the term type when it changes. 
-const [type, setSearchType] = useState('movie')
+const [type, setSearchType] = useState(props.search.type)
 
   //called when a Go butto is clicked
   const onFormSubmit = function (event) {
-    if(query==''){
-      ///need to add error message!!!
-      console.log('empty')
-    }
     //sends the search to the actions
     props.fetchSearch(type, query)
   }
@@ -37,11 +33,19 @@ const [type, setSearchType] = useState('movie')
                 </button>
             </form>
           </SearchContainer>
+          
       )
     }
 
+    function mapStateToProps (state) {
+      console.log(state)
+      return ({ 
+        search: state.search 
+      }
+      )};
+
     export default connect(
-        null,
+        mapStateToProps,
         actions
       )(SearchBar);
 

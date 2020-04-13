@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 //controls the search bar
 function NavBar(props) {
 
-  //shows all movies when logo is clickd
-  const logoClick = () =>{props.fetchAllMovies()}
+  //shows all movies when logo is clicked, sends type from previous search
+  const logoClick = () =>{props.fetchAllMovies(props.type)}
 
       return (
         <NavContainer>
@@ -22,8 +22,15 @@ function NavBar(props) {
       )
     }
 
+    function mapStateToProps (state) {
+      console.log(state)
+      return ({ 
+        type: state.search.type
+      }
+      )};
+
     export default connect(
-        null,
+        mapStateToProps,
         actions
       )(NavBar);
 

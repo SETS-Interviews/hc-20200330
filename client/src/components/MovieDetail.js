@@ -5,6 +5,7 @@ import Overdrive from "react-overdrive";
 import * as actions from '../actions';
 import { connect } from "react-redux";
 import Credits from './Credits'
+import { Link } from "react-router-dom";
 
 class MovieDetail extends Component {
   componentDidMount(){
@@ -12,6 +13,7 @@ class MovieDetail extends Component {
   }
 
   render() {
+    //if Id nuber is invalid
     if (this.props.movie == undefined){
       return(
         <>
@@ -20,10 +22,14 @@ class MovieDetail extends Component {
         </>
       )
     }
+
+    //background picture paths
     const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
     const BACKDROP_PATH = "http://image.tmdb.org/t/p/w1280";
 
+    //finding the movie id that matches umovie clicked on
     const movie  = this.props.movie.filter(movie=>(movie.id == this.props.match.params.id))[0];
+
 
     const renderMovieDetail = () => {
       
@@ -41,12 +47,13 @@ class MovieDetail extends Component {
           </div>
         );
     }
-    //if the id number can't be found
+
+
     return (
       <Fragment>
-        <BackdropContainer
-          backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}
-        />
+        <BackdropContainer backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`} >
+        <Link to='/'>Back</Link>
+        </BackdropContainer>
         <DetailInfo>
           <Overdrive id={String(movie.id)}>
             <Poster
@@ -85,6 +92,10 @@ const BackdropContainer = styled.div`
   width:100%;
   justify-content: center;
   opacity: 0.8;
+  #btn{
+    position:relative;
+    display:flex;
+  }
 `;
 
 const DetailInfo = styled.div`
