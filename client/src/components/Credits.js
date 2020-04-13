@@ -56,12 +56,20 @@ class Credits extends Component {
             profilePic =`${PICTURE_PATH}${crewMember.profile_path}`
         }
         return (
+          <div>
             <Poster
               src={profilePic}
               alt="profile"
               style={{ boxShadow: "0 5px 30px black" }}
               id={crewMember.crew_id}
             />
+            <Name>
+            {crewMember.job}
+            </Name>
+            <NameSmall>
+           {crewMember.name}
+            </NameSmall>
+            </div>
         );
     }
     
