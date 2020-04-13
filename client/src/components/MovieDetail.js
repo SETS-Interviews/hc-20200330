@@ -51,8 +51,9 @@ class MovieDetail extends Component {
 
     return (
       <Fragment>
+        
         <BackdropContainer backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`} >
-        <Link to='/'>Back</Link>
+        <Back><Link to='/' id='back'><i className="fas fa-backward"></i> Back</Link></Back>
         </BackdropContainer>
         <DetailInfo>
           <Overdrive id={String(movie.id)}>
@@ -85,17 +86,24 @@ export default connect(
 
 const BackdropContainer = styled.div`
   position: relative;
-  padding-top: 70vh;
+  padding-bottom: 70vh;
   background: url(${props => props.backdrop}) no-repeat;
   background-position: relative;
   object-fit: cover;
   width:100%;
   justify-content: center;
   opacity: 0.8;
-  #btn{
-    position:relative;
-    display:flex;
+  a{
+    color: #fff;
+    text-decoration:none;
   }
+`;
+
+const Back = styled.div`
+  position: relative;
+  font-color: white;
+  margin-top:20px;
+  font-size:30px
 `;
 
 const DetailInfo = styled.div`

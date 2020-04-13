@@ -18,7 +18,7 @@ class Credits extends Component {
         )
       }
 
-    //Declaring the varialbes for the profile pictures
+    //Declaring the variables for the profile pictures
     const PICTURE_PATH = "http://image.tmdb.org/t/p/w185";
     let profilePic
 
@@ -36,8 +36,13 @@ class Credits extends Component {
               src={profilePic}
               alt="profile"
               style={{ boxShadow: "0 5px 30px black" }}
-              id={castMember.cast_id}
-            />
+              id={castMember.cast_id} />
+              <Name>
+              {castMember.character}
+              </Name>
+              <NameSmall>
+             {castMember.name}
+              </NameSmall>
           </div>
         );
     }
@@ -96,7 +101,25 @@ const Grid = styled.div`
   margin: 0 auto;
 `;
 
-export const Poster = styled.img`
+const Name = styled.h2`
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:185px;
+padding-right:10px;
+padding-left:10px;
+`;
+
+const NameSmall = styled.h4`
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:185px;
+padding-right:10px;
+padding-left:10px;
+`;
+
+const Poster = styled.img`
   box-shadow: 0 0 30px white;
   width:185px;
   height:277px;

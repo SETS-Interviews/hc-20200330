@@ -10,8 +10,8 @@ import { connect } from 'react-redux';
 class MovieList extends Component {  
 
   componentDidMount () {
+    //checks local storage value to know which call to fetch
     if (this.props.search.query == ''){
-      console.log('movie list if statement', this.props.search.query)
       this.props.fetchAllMovies(this.props.search.type)
     }else {
       this.props.fetchSearch(this.props.search.type, this.props.search.query)
