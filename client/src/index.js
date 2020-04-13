@@ -9,7 +9,7 @@ import rootReducer from "./reducers/index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MovieList from './components/MovieList'
 import MovieDetail from './components/MovieDetail'
-import SearchBar from './components/Searchbar'
+import NavBar from './components/NavBar'
 
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
@@ -18,7 +18,7 @@ render(
   <Provider store={store}>
     <Router>
     <Fragment>
-        <SearchBar />
+        <NavBar />
         <App>
           <Switch>
             <Route exact path="/" component={MovieList} />

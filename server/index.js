@@ -88,4 +88,5 @@ app.get('/', (req, res) => {
 const port = 5000;
 const server = http.createServer(app);
 server.listen(port);
+console.log(port)
 module.exports = { server }

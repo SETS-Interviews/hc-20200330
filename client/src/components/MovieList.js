@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Movie from "./Movie";
-import { connect } from "react-redux";
-import * as actions from '../actions';
+import SearchBar from "./Searchbar"
 import _ from "lodash";
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 
 
 class MovieList extends Component {  
@@ -19,9 +20,12 @@ class MovieList extends Component {
     });
 
     return (
+      <>
+        <SearchBar />
         <MovieGrid>
           {movies}
         </MovieGrid>
+        </>
     );
   }
 }

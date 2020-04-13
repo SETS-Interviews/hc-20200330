@@ -16,33 +16,27 @@ const [type, setSearchType] = useState('movie')
 
   //called when a Go butto is clicked
   const onFormSubmit = function (event) {
+    if(query==''){
+      ///need to add error message!!!
+      console.log('empty')
+    }
     //sends the search to the actions
     props.fetchSearch(type, query)
   }
 
-  //shows all movies when logo is clickd
-  const logoClick = () =>{props.fetchAllMovies()}
-
       return (
         <SearchContainer>
-            <button id="logo" onClick={logoClick}>
-                <Link to="/">
-                    <h1>Movie Database</h1>
-                </Link>
-            </button>
             <form id="search">
-                <select id='selector' onChange={event => setSearchType(event.target.value)}>
+                <select type='text' id='selector' onChange={event => setSearchType(event.target.value)}>
                     <option value="movie">Movies</option>
                     <option value="person">People</option>
                 </select>
                 <input id='bar' onChange={event => setSearchQuery(event.target.value)} type="text" placeholder="Search"></input>
-                <button className='search-btn' type='button' onClick={onFormSubmit}>
-                <Link to="/">
-                Go!
-                </Link>
+                <button id='search-btn' type='button' onClick={onFormSubmit}>
+                <p type='text'>Go!</p>
                 </button>
             </form>
-        </SearchContainer>
+          </SearchContainer>
       )
     }
 
@@ -53,35 +47,35 @@ const [type, setSearchType] = useState('movie')
 
 
       const SearchContainer = styled.div`
-      position: fixed;
-      z-index: 999;
-      background: hsl(0, 0%, 13%);
-      color: whitesmoke;
-      margin-top: 0;
-      width: 100%;
+      display: flex;
+      flex-direction: row;
+      width: 50%;
       height: auto;
-      padding: 1.5em;
-      #logo {
-        position: relative;
-        float: left;
-        width: 200px;
-        height: auto;
-        background-color:hsl(0, 0%, 13%);
-        border: none;
-        outline:none;
-      }
+      margin:auto;
       #search {
         position: relative;
-        float: right;
-        margin-right: 100px;
-        margin-top:20px;
-        height: auto;
+        width: 100%;
+        height:auto;
+        border: none;
+        outline:none;
+        font-size:100px;
+      }
+      #selector {
+        width: 25%;
+        height: 100%;
+        padding:10px;
       }
       #bar{
-          width:300px;
+        width: 50%;
+        height: 100%;
+    
       }
-      a {
-        color: #fff;
+      #search-btn{
+        margin-top:0;
+      }
+      [type="text"]
+      {
+      font-size:20px;
       }
     `;
 
