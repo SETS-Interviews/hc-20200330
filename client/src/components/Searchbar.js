@@ -33,7 +33,7 @@ const [type, setSearchType] = useState('movie')
                 </select>
                 <input id='bar' onChange={event => setSearchQuery(event.target.value)} type="text" placeholder="Search"></input>
                 <button id='search-btn' type='button' onClick={onFormSubmit}>
-                <p type='text'>Go!</p>
+                Go!
                 </button>
             </form>
           </SearchContainer>
@@ -47,35 +47,53 @@ const [type, setSearchType] = useState('movie')
 
 
       const SearchContainer = styled.div`
-      display: flex;
-      flex-direction: row;
-      width: 50%;
-      height: auto;
-      margin:auto;
-      #search {
-        position: relative;
-        width: 100%;
-        height:auto;
-        border: none;
-        outline:none;
-        font-size:100px;
-      }
+      display:relative;
+      margin-top:40px;
+      text-align: center;
       #selector {
-        width: 25%;
-        height: 100%;
-        padding:10px;
+        width:10%;
+        font-size: 16px;
+        border: solid 1px #dbdbdb;
+        border-radius: 3px;
+        color: #262626;
+        padding: 7px 33px;
+        border-radius: 3px;
+        color: #999;
+        cursor: text;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        background: #fafafa;
+        &:active,
+        &:focus {
+          text-align: left;
+        }
       }
       #bar{
-        width: 50%;
-        height: 100%;
-    
+        background-color: transparent;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin-left: 4px;
+        max-width: 30%;
+        text-align: left;
+        box-sizing: border-box;
+        border-width:.5px;
+        width: 100%;
       }
       #search-btn{
-        margin-top:0;
-      }
-      [type="text"]
-      {
-      font-size:20px;
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
+        cursor: default;
+        box-sizing: border-box;
+        margin: 0em;
+        font-size: 16px;
+        padding: 1px 7px 2px;
+        border-width: 1px;
+        border-style: solid;
+        border-image: initial;
+    }
       }
     `;
 
