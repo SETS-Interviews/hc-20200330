@@ -1,11 +1,9 @@
 import axios from 'axios';
 import chalk from 'chalk';
-import {searchForMovie} from './routes'
 
+//checks for empty search
 function validateMovieName(movieName) {
-    console.log(movieName._)
-    if (movieName._.length!==2) {
-
+    if (movieName._.length ==1) {
       return false;
     }else{
     return true;
@@ -13,13 +11,38 @@ function validateMovieName(movieName) {
   }
 
 export function movie(movieName){
+   //of no search critera was entered gives warning
     if (!validateMovieName(movieName)){
         console.error(
             chalk.redBright(
-              `Please enter the name of the movie you would like to search. It must not have spaces.  Example "Toy+Story"`
+              `Please enter the name of the movie you would like to search.`
             )
           );
     }else{
-        console.log(searchForMovie(movieName._[1]))
+      //loop through search terms entered so it is a string with no spaces
+      let searchTerm = ''
+      for (let i = 1; i < movieName._.length; i++ ){
+        if (i==1){
+          searchTerm = searchTerm + movieName._[i]
+        }else{
+        searchTerm = searchTerm + '+' + movieName._[i]
+        }
+      }
+
+      axios({
+        method: 'get',
+        url: `http://localhost:5000/movie?search=${searchTerm}`
+      })
+      //logs cast and crew names
+      .then(function(response){
+        console.log(chalk.greenBright('Cast:'))
+        response.data.cast.map(member=>{console.log(member.name)})
+        console.log(chalk.greenBright('Crew:'))
+        response.data.crew.map(member=>{console.log(member.name)})
+    })
+    //if error sends error message
+    .catch(function(error){
+        console.log(chalk.redBright('Sorry, we could not find any movie to match your search.'))
+    })
     }
 }

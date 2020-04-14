@@ -10,7 +10,7 @@
   "bin": {
     "cli": "./index.js"
   },
-  "start": "node index.js",
+  "start": "node server.js",
   "keywords": [
     "movies",
     "cli",
@@ -20,12 +20,14 @@
   "author": "Hannah Cline",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.9.2",
     "axios": "^0.19.2",
     "chalk": "^3.0.0",
-    "express": "^4.17.1",
     "cli-table3": "^0.5.1",
     "conf": "^6.2.1",
+    "cors": "^2.8.5",
     "esm": "^3.2.25",
+    "express": "^4.17.1",
     "minimist": "^1.2.5"
   },
   "devDependencies": {
