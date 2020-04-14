@@ -1,0 +1,37 @@
+{
+  "name": "hc-20200330",
+  "version": "1.0.0",
+  "description": "cli app for tmdb",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter dot",
+    "coverage": "nyc --reporter html --reporter text npm test"
+  },
+  "bin": {
+    "cli": "./index.js"
+  },
+  "start": "node index.js",
+  "keywords": [
+    "movies",
+    "cli",
+    "actor",
+    "director"
+  ],
+  "author": "Hannah Cline",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^3.0.0",
+    "express": "^4.17.1",
+    "cli-table3": "^0.5.1",
+    "conf": "^6.2.1",
+    "esm": "^3.2.25",
+    "minimist": "^1.2.5"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.1",
+    "chai": "^3.5.0",
+    "chai-http": "^4.3.0",
+    "nyc": "^15.0.1"
+  }
+}
