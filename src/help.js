@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-//help command return helpful menu with commands
+//help command returns helpful menu with commands
 const menus = {
   main: `
 ${chalk.greenBright('cli [command] <options>')}

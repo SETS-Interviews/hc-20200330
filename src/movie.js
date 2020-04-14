@@ -11,7 +11,7 @@ function validateMovieName(movieName) {
   }
 
 export function movie(movieName){
-   //of no search critera was entered gives warning
+   //if no search critera was entered gives warning
     if (!validateMovieName(movieName)){
         console.error(
             chalk.redBright(
@@ -42,7 +42,7 @@ export function movie(movieName){
     })
     //if error sends error message
     .catch(function(error){
-        console.log(chalk.redBright('Sorry, we could not find any movie to match your search.'))
+        console.log(chalk.redBright('Sorry, we could not find a movie to match your search.'))
     })
     }
 }

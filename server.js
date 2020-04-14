@@ -28,7 +28,7 @@ app.use(bodyParser.json());
                 res.status(404);
                 return res.end(`Your request could be found.`);   
             }
-            //sending id of the first results to recieve cast and crew information
+            //sending id of the first results to receive cast and crew information
             axios.get(`${baseURL}movie/${response.data.results[0].id}/credits?${apiKey}&language=en-US`
             ).then(function (response) {
                 res.send(response.data)

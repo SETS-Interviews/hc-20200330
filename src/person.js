@@ -11,11 +11,11 @@ function validateActorName(name) {
   }
 
 export function person(name){
-  //if no name was enter, gives user warning
+  //if no name was entered, gives user warning
     if (!validateActorName(name)){
         console.error(
             chalk.redBright(
-              `Please enter the name of the movie you would like to search.`
+              `Please enter the name of the person you would like to search.`
             )
           );
     }else{
@@ -40,7 +40,7 @@ export function person(name){
     })
     //if error sends error message
     .catch(function(error){
-        console.log(chalk.redBright('Sorry, we could not find any person that match your search.'))
+        console.log(chalk.redBright('Sorry, we could not find a person that matched your search.'))
     })
     }
 }

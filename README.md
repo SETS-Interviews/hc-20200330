@@ -9,8 +9,11 @@ Please refer to 'Issues' for your requirements.
 Directions for Terminal:
 
 $ git clone https://github.com/SETS-Interviews/hc-20200330.git
+
 $ cd hc-20200330
+
 $ docker build --tag cli:1.0 .
+
 $ docker run --publish 5000:5000 --name cli cli:1.0
 
 Open New Terminal Window:
@@ -25,6 +28,10 @@ cli [command] <options>
   director <director name> ............search director to find movies they directed
   help............... show help menu for a command
   version ............... shows current version
+
+*if Server errors 
+$ npm install
+$ cli help
 
 Movie Search Example and Results:
 
@@ -82,6 +89,7 @@ Example actor search and results:
 $ cli actor Tom Hanks
 
 Movies that match your search for Tom+Hanks
+
 Cars
 Toy Story 4
 Forrest Gump
@@ -108,6 +116,7 @@ Example of director search and results:
 $ cli director Steven Spielberg
 
 Movies that match your search for Steven+Spielberg
+
 Indiana Jones and the Temple of Doom
 Jaws
 Austin Powers in Goldmember

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "cli app for tmdb",
   "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "test": "mocha --reporter dot",
     "coverage": "nyc --reporter html --reporter text npm test"

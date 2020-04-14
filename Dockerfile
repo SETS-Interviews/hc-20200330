@@ -6,7 +6,8 @@ FROM node:lts-slim
 WORKDIR /usr/src/app
 
 # Copy the file from your host to your current location.
-COPY package.json .
+COPY package.json /usr/src/app/
+RUN npm install
 
 # Run the command inside your image filesystem.
 RUN npm install
