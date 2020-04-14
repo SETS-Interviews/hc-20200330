@@ -33,7 +33,7 @@ cli [command] <options>
 $ npm install
 $ cli help
 
-Movie Search Example and Results:
+Movie Search Example and Results - search a movie title and returns list of the movie's cast and crew.
 
 $ cli movie About Time
 
@@ -84,7 +84,7 @@ John Guleserian
 Nick Laird-Clowes
 
 
-Example actor search and results:
+Example actor search and results - Search an actor's name and returns all movies that he/she has appeared in.
 
 $ cli actor Tom Hanks
 
@@ -111,7 +111,7 @@ Sully
 Captain Phillips
 Cloud Atlas
 
-Example of director search and results:
+Example of director search and results - Search an director's name and returns all movies that he/she has worked on.
 
 $ cli director Steven Spielberg
 
