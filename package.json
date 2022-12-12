@@ -28,7 +28,7 @@
     "conf": "^6.2.1",
     "cors": "^2.8.5",
     "esm": "^3.2.25",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "minimist": "^1.2.5"
   },
   "devDependencies": {
